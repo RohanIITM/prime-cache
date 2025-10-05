@@ -16,6 +16,3 @@ jobs:
         with:
           path: ~/.cache/pip
           key: cache-1758ae0
-
-      - name: Show cache hit/miss
-        run: echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
