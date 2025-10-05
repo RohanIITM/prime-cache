@@ -1,13 +1,16 @@
 name: Prime Cache Minimal
 
 on:
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch:
 
 jobs:
   cache-test:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create dummy directory
+        run: mkdir -p dummy-cache-dir
+
       - name: prime-cache-1758ae0
         id: cache-step
         uses: actions/cache@v4
@@ -16,4 +19,5 @@ jobs:
           key: cache-1758ae0
 
       - name: Print cache hit/miss
-        run: echo "Cache hit: true"
+        run: |
+          echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
